@@ -11,8 +11,12 @@
             <tr>
                 <td>@pj.Id</td>
                 <td>@pj.Name</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@pj.Id">More</a>
+                </td>
             </tr>
         }
     </table>
+    <a asp-action="Create">Add Project</a>
 </body>
 </html>

@@ -10,5 +10,7 @@ namespace MaterialCtrl.Services
     public interface IProjectData
     {
         IEnumerable<Project> GetAll();
+        Project Get(int id);
+        Project Add(Project project);
     }
 }

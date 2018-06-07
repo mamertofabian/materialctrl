@@ -18,7 +18,7 @@ namespace MaterialCtrl
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IGreeter, Greeter>();
-            services.AddScoped<IProjectData, InMemoryProjectData>();
+            services.AddSingleton<IProjectData, InMemoryProjectData>();  // will never work on multi-user environment!!!
             services.AddMvc();
         }
 
