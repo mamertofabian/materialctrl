@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Project>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Material Control</title>
+</head>
+<body>
+    <table>
+        @foreach (var pj in Model) {
+            <tr>
+                <td>@pj.Id</td>
+                <td>@pj.Name</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
