@@ -1,12 +1,13 @@
-﻿@model IEnumerable<Project>
+﻿@model HomeIndexViewModel
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Material Control</title>
 </head>
 <body>
+    <h1>@Model.CurrentMessage</h1>
     <table>
-        @foreach (var pj in Model) {
+        @foreach (var pj in Model.Projects) {
             <tr>
                 <td>@pj.Id</td>
                 <td>@pj.Name</td>
