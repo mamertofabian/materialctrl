@@ -17,4 +17,8 @@
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
   </ItemGroup>
 
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.3">
+    </DotNetCliToolReference>
+  </ItemGroup>
 </Project>

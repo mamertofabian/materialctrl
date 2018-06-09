@@ -38,13 +38,19 @@ namespace MaterialCtrl.Controllers {
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(ProjectEditModel model) {
-            var newProject = new Project();
-            newProject.Name = model.Name;
+            if (ModelState.IsValid) {
+                var newProject = new Project();
+                newProject.Name = model.Name;
 
-            newProject = _projectData.Add(newProject);
+                newProject = _projectData.Add(newProject);
 
-            return RedirectToAction(nameof(Details), new { id = newProject.Id });
+                return RedirectToAction(nameof(Details), new { id = newProject.Id });
+            }
+            else {
+                return View();
+            }
         }
     }
 }
