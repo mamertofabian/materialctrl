@@ -12,5 +12,6 @@ namespace MaterialCtrl.Services
         IEnumerable<Project> GetAll();
         Project Get(int id);
         Project Add(Project project);
+        Project Update(Project project);
     }
 }

@@ -2,6 +2,7 @@
 using System.Linq;
 using MaterialCtrl.Data;
 using MaterialCtrl.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace MaterialCtrl.Services {
     public class SqlProjectData : IProjectData {
@@ -24,6 +25,13 @@ namespace MaterialCtrl.Services {
 
         public IEnumerable<Project> GetAll() {
             return _context.Projects.OrderBy(p => p.Name);
+        }
+
+        public Project Update(Project project) {
+            _context.Attach(project).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            return project;
         }
     }
 }

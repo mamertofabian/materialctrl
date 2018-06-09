@@ -12,6 +12,7 @@
             <td>@pj.Name</td>
             <td>
                 <a asp-action="Details" asp-route-id="@pj.Id">More</a>
+                <a asp-page="/Projects/Edit" asp-route-id="@pj.Id">Edit</a>
             </td>
         </tr>
     }
