@@ -5,20 +5,17 @@
 }
 
 <h1>All Projects</h1>
-<table>
-    @foreach (var pj in Model.Projects) {
-        <tr>
-            <td>@pj.Id</td>
-            <td>@pj.Name</td>
-            <td>
-                <a asp-action="Details" asp-route-id="@pj.Id">More</a>
-                <a asp-page="/Projects/Edit" asp-route-id="@pj.Id">Edit</a>
-            </td>
-        </tr>
-    }
-</table>
-<a asp-action="Create">Add Project</a>
 
-@section footer{
-    <h5>@Model.CurrentMessage</h5>
+@foreach (var project in Model.Projects) {
+    @Html.Partial("_Summary", project)
 }
+
+<div>
+    <a asp-action="Create">Add Project</a>
+</div>
+
+<div>
+    @section footer{
+        <h5>@Model.CurrentMessage</h5>
+}
+</div>
