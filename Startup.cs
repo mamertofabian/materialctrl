@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MaterialCtrl.Data;
+﻿using MaterialCtrl.Data;
 using MaterialCtrl.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -38,19 +33,16 @@ namespace MaterialCtrl {
 
             app.UseStaticFiles();
 
+            app.UseNodeModules(env.ContentRootPath);
+
             app.UseMvc(ConfigureRoutes);
 
             if (env.IsDevelopment()) {
-                // seed the database
                 using (var scope = app.ApplicationServices.CreateScope()) {
                     var seeder = scope.ServiceProvider.GetService<MaterialCtrlDbSeeder>();
                     seeder.Seed();
                 }
             }
-
-            //app.Run(async (context) => {
-            //    await context.Response.WriteAsync(greeter.GetMessageOfTheDay());
-            //});
         }
 
         private void ConfigureRoutes(IRouteBuilder routeBuilder) {
