@@ -11,20 +11,21 @@ namespace MaterialCtrl.Controllers {
     [Route("api/[Controller]")]
     public class OrdersController : Controller
     {
-        private readonly IOrderData _orderData;
+        private readonly IOrderRepository _orderRepository;
         private readonly ILogger<OrdersController> _logger;
         private readonly IMapper _mapper;
 
-        public OrdersController(IOrderData orderData, ILogger<OrdersController> logger, IMapper mapper) {
-            _orderData = orderData;
+        public OrdersController(IOrderRepository orderRepository, ILogger<OrdersController> logger, IMapper mapper) {
+            _orderRepository = orderRepository;
             _logger = logger;
             _mapper = mapper;
         }
 
         [HttpGet]
-        public IActionResult Get() {
+        public IActionResult Get(bool includeItems = true) {
             try {
-                return Ok(_mapper.Map<IEnumerable<Order>, IEnumerable<OrderViewModel>>(_orderData.GetAll()));
+                var results = _orderRepository.GetAllOrders(includeItems);
+                return base.Ok(_mapper.Map<IEnumerable<Order>, IEnumerable<OrderViewModel>>(results));
             }
             catch (Exception ex) {
                 _logger.LogError($"Failed to get orders : {ex}");
@@ -35,7 +36,7 @@ namespace MaterialCtrl.Controllers {
         [HttpGet("{id:int}")]
         public IActionResult Get(int id) {
             try {
-                var order = _orderData.Get(id);
+                var order = _orderRepository.GetOrderById(id);
                 if (order != null) {
                     return Ok(_mapper.Map<Order, OrderViewModel>(order));
                 }
@@ -59,7 +60,7 @@ namespace MaterialCtrl.Controllers {
                         newOrder.OrderDate = DateTime.Now;
                     }
 
-                    newOrder = _orderData.Add(newOrder);
+                    newOrder = _orderRepository.AddOrder(newOrder);
 
                     return Created($"/api/orders/{newOrder.Id}", 
                         _mapper.Map<Order, OrderViewModel>(newOrder));

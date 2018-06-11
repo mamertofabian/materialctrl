@@ -7,23 +7,23 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace MaterialCtrl.Services {
-    public class SqlOrderData : IOrderData {
+    public class OrderRepository : IOrderRepository {
         private readonly MaterialCtrlDbContext _context;
-        private readonly ILogger<SqlOrderData> _logger;
+        private readonly ILogger<OrderRepository> _logger;
 
-        public SqlOrderData(MaterialCtrlDbContext context, ILogger<SqlOrderData> logger) {
+        public OrderRepository(MaterialCtrlDbContext context, ILogger<OrderRepository> logger) {
             _context = context;
             _logger = logger;
         }
 
-        public Order Add(Order order) {
+        public Order AddOrder(Order order) {
             _context.Orders.Add(order);
             _context.SaveChanges();
 
             return order;
         }
 
-        public Order Get(int id) {
+        public Order GetOrderById(int id) {
             return _context.Orders
                 .Include(o => o.Items)
                 .ThenInclude(i => i.Material)
@@ -31,14 +31,24 @@ namespace MaterialCtrl.Services {
                 .FirstOrDefault(p => p.Id == id);
         }
 
-        public IEnumerable<Order> GetAll() {
+        public IEnumerable<Order> GetAllOrders(bool includeItems) {
             try {
                 _logger.LogInformation("GetAll orders was called");
-                return _context.Orders
-                    .Include(o => o.Items)
-                    .ThenInclude(i => i.Material)
+
+                if (includeItems) {
+                    return _context.Orders
+                                        .Include(o => o.Items)
+                                        .ThenInclude(i => i.Material)
+                                        .Include(o => o.User)
+                                        .OrderBy(p => p.OrderDate);
+                }
+                else {
+                    return _context.Orders
                     .Include(o => o.User)
                     .OrderBy(p => p.OrderDate);
+                }
+
+
             }
             catch (Exception ex) {
                 _logger.LogError($"Failed to get all orders: {ex}");
@@ -46,7 +56,7 @@ namespace MaterialCtrl.Services {
             }
         }
 
-        public Order Update(Order order) {
+        public Order UpdateOrder(Order order) {
             _context.Attach(order).State = EntityState.Modified;
             _context.SaveChanges();
 
