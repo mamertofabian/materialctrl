@@ -43,9 +43,12 @@ namespace MaterialCtrl.Data {
                 _context.SaveChanges();
             }
 
+            var pieceUnit = new UnitType { Name = "Piece", PluralName = "Pieces",
+                Abbreviation = "Pc", PluralAbbreviation = "Pcs" };
+
             if (!_context.UnitTypes.Any()) {
                 var unitTypes = new List<UnitType> {
-                    new UnitType { Name="Piece", PluralName = "Pieces", Abbreviation = "Pc", PluralAbbreviation = "Pcs" },
+                    pieceUnit,
                     new UnitType { Name="Box", PluralName = "Boxes", Abbreviation="Bx", PluralAbbreviation = "Bxs" },
                     new UnitType { Name="Liter", PluralName = "Liters", Abbreviation = "L" },
                     new UnitType { Name="Meter", PluralName = "Meters", Abbreviation = "M" },
@@ -53,6 +56,34 @@ namespace MaterialCtrl.Data {
                 };
 
                 _context.UnitTypes.AddRange(unitTypes);
+                _context.SaveChanges();
+            }
+
+            var defaultMaterial = new Material {
+                Name = "Material 1",
+                CreatedBy = user,
+                CreatedOn = DateTime.Now,
+                Unit = pieceUnit
+            };
+
+            if (!_context.Materials.Any()) {
+                var materials = new List<Material> {
+                    defaultMaterial
+                };
+
+                _context.Materials.AddRange(materials);
+                _context.SaveChanges();
+            }
+
+            if (!_context.Orders.Any()) {
+                _context.Orders.Add(new Order {
+                    OrderDate = DateTime.Now,
+                    OrderNumber = "Order-001",
+                    Items = new List<OrderItem> {
+                        new OrderItem { Material = defaultMaterial, UnitPrice = 9.99m, Quantity = 2 } },
+                    User = user
+                });
+
                 _context.SaveChanges();
             }
         }

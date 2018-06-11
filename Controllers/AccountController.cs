@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MaterialCtrl.Controllers {
     public class AccountController : Controller {
-        private ILogger<AccountController> _logger;
+        private readonly ILogger<AccountController> _logger;
         private SignInManager<User> _signInManager;
 
         public AccountController(ILogger<AccountController> logger, SignInManager<User> signInManager) {

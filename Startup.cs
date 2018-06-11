@@ -1,4 +1,5 @@
-﻿using MaterialCtrl.Data;
+﻿using AutoMapper;
+using MaterialCtrl.Data;
 using MaterialCtrl.Entities;
 using MaterialCtrl.Services;
 using Microsoft.AspNetCore.Builder;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 
 namespace MaterialCtrl {
     public class Startup {
@@ -26,16 +28,26 @@ namespace MaterialCtrl {
                 config.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<MaterialCtrlDbContext>();
 
+            services.AddAuthentication()
+                .AddCookie()
+                .AddJwtBearer();
+
             services.AddSingleton<IGreeter, Greeter>();
             services.AddDbContext<MaterialCtrlDbContext>(
                 options => options.UseSqlServer(_configuration.GetConnectionString("MaterialCtrl")));
             services.AddTransient<MaterialCtrlDbSeeder>();
+
+            services.AddAutoMapper();
+
             services.AddScoped<IProjectData, SqlProjectData>();
+            services.AddScoped<IMaterialData, SqlMaterialData>();
+            services.AddScoped<IOrderData, SqlOrderData>();
             services.AddMvc(options => {
                 if (_environment.IsProduction()) {
                     options.Filters.Add(new RequireHttpsAttribute());
                 }
-            });
+            }).AddJsonOptions(options =>
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

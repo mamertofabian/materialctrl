@@ -10,5 +10,6 @@ namespace MaterialCtrl.Data {
         public DbSet<Project> Projects { get; set; }
         public DbSet<Material> Materials { get; set; }
         public DbSet<UnitType> UnitTypes { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }

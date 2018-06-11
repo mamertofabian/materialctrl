@@ -11,9 +11,10 @@ using System;
 namespace MaterialCtrl.Migrations
 {
     [DbContext(typeof(MaterialCtrlDbContext))]
-    partial class MaterialCtrlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180611134644_AddedOrderAndOrderItem")]
+    partial class AddedOrderAndOrderItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
