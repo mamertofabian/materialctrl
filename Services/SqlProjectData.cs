@@ -3,13 +3,16 @@ using System.Linq;
 using MaterialCtrl.Data;
 using MaterialCtrl.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace MaterialCtrl.Services {
     public class SqlProjectData : IProjectData {
         private readonly MaterialCtrlDbContext _context;
+        private readonly ILogger<SqlProjectData> _logger;
 
-        public SqlProjectData(MaterialCtrlDbContext context) {
+        public SqlProjectData(MaterialCtrlDbContext context, ILogger<SqlProjectData> logger) {
             _context = context;
+            _logger = logger;
         }
 
         public Project Add(Project project) {
@@ -24,7 +27,14 @@ namespace MaterialCtrl.Services {
         }
 
         public IEnumerable<Project> GetAll() {
-            return _context.Projects.OrderBy(p => p.Name);
+            try {
+                _logger.LogInformation("GetAll projects was called");
+                return _context.Projects.OrderBy(p => p.Name);
+            }
+            catch (System.Exception ex) {
+                _logger.LogError($"Failed to get all projects: {ex}");
+                return null;
+            }
         }
 
         public Project Update(Project project) {
