@@ -10,7 +10,9 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace MaterialCtrl {
     public class Startup {
@@ -30,7 +32,13 @@ namespace MaterialCtrl {
 
             services.AddAuthentication()
                 .AddCookie()
-                .AddJwtBearer();
+                .AddJwtBearer(config => {
+                    config.TokenValidationParameters = new TokenValidationParameters() {
+                        ValidIssuer = _configuration["Tokens:Issuer"],
+                        ValidAudience = _configuration["Tokens:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:Key"]))
+                    };
+                });
 
             services.AddSingleton<IGreeter, Greeter>();
             services.AddDbContext<MaterialCtrlDbContext>(
