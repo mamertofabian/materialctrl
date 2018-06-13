@@ -7,43 +7,43 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace MaterialCtrl.Services {
-    public class OrderRepository : IOrderRepository {
+    public class PurchaseOrderRepository : IPurchaseOrderRepository {
         private readonly MaterialCtrlDbContext _context;
-        private readonly ILogger<OrderRepository> _logger;
+        private readonly ILogger<PurchaseOrderRepository> _logger;
 
-        public OrderRepository(MaterialCtrlDbContext context, ILogger<OrderRepository> logger) {
+        public PurchaseOrderRepository(MaterialCtrlDbContext context, ILogger<PurchaseOrderRepository> logger) {
             _context = context;
             _logger = logger;
         }
 
-        public Order AddOrder(Order order) {
-            _context.Orders.Add(order);
+        public PurchaseOrder AddOrder(PurchaseOrder order) {
+            _context.PurchaseOrders.Add(order);
             _context.SaveChanges();
 
             return order;
         }
 
-        public Order GetOrderById(int id) {
-            return _context.Orders
+        public PurchaseOrder GetOrderById(int id) {
+            return _context.PurchaseOrders
                 .Include(o => o.Items)
                 .ThenInclude(i => i.Material)
                 .Include(o => o.User)
                 .FirstOrDefault(p => p.Id == id);
         }
 
-        public IEnumerable<Order> GetAllOrders(bool includeItems) {
+        public IEnumerable<PurchaseOrder> GetAllOrders(bool includeItems) {
             try {
                 _logger.LogInformation("GetAll orders was called");
 
                 if (includeItems) {
-                    return _context.Orders
+                    return _context.PurchaseOrders
                                         .Include(o => o.Items)
                                         .ThenInclude(i => i.Material)
                                         .Include(o => o.User)
                                         .OrderBy(p => p.OrderDate);
                 }
                 else {
-                    return _context.Orders
+                    return _context.PurchaseOrders
                     .Include(o => o.User)
                     .OrderBy(p => p.OrderDate);
                 }
@@ -56,7 +56,7 @@ namespace MaterialCtrl.Services {
             }
         }
 
-        public Order UpdateOrder(Order order) {
+        public PurchaseOrder UpdateOrder(PurchaseOrder order) {
             _context.Attach(order).State = EntityState.Modified;
             _context.SaveChanges();
 

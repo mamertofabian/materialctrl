@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace MaterialCtrl.ViewModels {
-    public class OrderItemViewModel {
+    public class PurchaseOrderItemViewModel {
         public int Id { get; set; }
         [Required]
         public int Quantity { get; set; }

@@ -49,7 +49,7 @@ namespace MaterialCtrl {
 
             services.AddScoped<IProjectData, SqlProjectData>();
             services.AddScoped<IMaterialData, SqlMaterialData>();
-            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IPurchaseOrderRepository, PurchaseOrderRepository>();
             services.AddMvc(options => {
                 if (_environment.IsProduction()) {
                     options.Filters.Add(new RequireHttpsAttribute());

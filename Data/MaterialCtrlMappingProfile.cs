@@ -6,11 +6,11 @@ namespace MaterialCtrl.Data {
     public class MaterialCtrlMappingProfile : Profile
     {
         public MaterialCtrlMappingProfile() {
-            CreateMap<Order, OrderViewModel>()
+            CreateMap<PurchaseOrder, PurchaseOrderViewModel>()
                 .ForMember(m => m.OrderId, vm => vm.MapFrom(f => f.Id))
                 .ReverseMap();
 
-            CreateMap<OrderItem, OrderItemViewModel>()
+            CreateMap<PurchaseOrderItem, PurchaseOrderItemViewModel>()
                 .ReverseMap();
         }
     }

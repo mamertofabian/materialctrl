@@ -75,12 +75,12 @@ namespace MaterialCtrl.Data {
                 _context.SaveChanges();
             }
 
-            if (!_context.Orders.Any()) {
-                _context.Orders.Add(new Order {
+            if (!_context.PurchaseOrders.Any()) {
+                _context.PurchaseOrders.Add(new PurchaseOrder {
                     OrderDate = DateTime.Now,
                     OrderNumber = "Order-001",
-                    Items = new List<OrderItem> {
-                        new OrderItem { Material = defaultMaterial, UnitPrice = 9.99m, Quantity = 2 } },
+                    Items = new List<PurchaseOrderItem> {
+                        new PurchaseOrderItem { Material = defaultMaterial, UnitPrice = 9.99m, Quantity = 2 } },
                     User = user
                 });
 

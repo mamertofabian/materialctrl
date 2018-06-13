@@ -12,15 +12,15 @@ using System.Threading.Tasks;
 
 namespace MaterialCtrl.Controllers
 {
-    [Route("/api/orders/{orderid}/items")]
-    public class OrderItemsController : Controller
+    [Route("/api/purchaseorders/{orderid}/items")]
+    public class PurchaseOrderItemsController : Controller
     {
-        private readonly IOrderRepository _orderRepository;
-        private readonly ILogger<OrderItemsController> _logger;
+        private readonly IPurchaseOrderRepository _orderRepository;
+        private readonly ILogger<PurchaseOrderItemsController> _logger;
         private readonly IMapper _mapper;
 
-        public OrderItemsController(IOrderRepository orderRepository, 
-            ILogger<OrderItemsController> logger, IMapper mapper) {
+        public PurchaseOrderItemsController(IPurchaseOrderRepository orderRepository, 
+            ILogger<PurchaseOrderItemsController> logger, IMapper mapper) {
             _orderRepository = orderRepository;
             _logger = logger;
             _mapper = mapper;
@@ -30,8 +30,8 @@ namespace MaterialCtrl.Controllers
         public IActionResult Get(int orderId) {
             var order = _orderRepository.GetOrderById(orderId);
             if (order != null) {
-                return Ok(_mapper.Map<IEnumerable<OrderItem>, 
-                    IEnumerable<OrderItemViewModel>>(order.Items));
+                return Ok(_mapper.Map<IEnumerable<PurchaseOrderItem>, 
+                    IEnumerable<PurchaseOrderItemViewModel>>(order.Items));
             }
             else {
                 return NotFound();
@@ -44,7 +44,7 @@ namespace MaterialCtrl.Controllers
             if (order != null) {
                 var item = order.Items.Where(i => i.Order.Id == id).FirstOrDefault();
                 if (item != null) {
-                    return Ok(_mapper.Map<OrderItem, OrderItemViewModel>(item)); 
+                    return Ok(_mapper.Map<PurchaseOrderItem, PurchaseOrderItemViewModel>(item)); 
                 }
 
                 return NotFound();
