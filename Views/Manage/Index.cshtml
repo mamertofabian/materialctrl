@@ -1,5 +1,14 @@
-﻿@{
+﻿@section Scripts {
+    <script src="~/ClientApp/dist/polyfills.js"></script>
+    <script src="~/ClientApp/dist/styles.js"></script>
+    <script src="~/ClientApp/dist/vendor.js"></script>
+    <script src="~/ClientApp/dist/main.js"></script>
+    <script src="~/ClientApp/dist/runtime.js"></script>
+}
+
+@{
     ViewBag.Title = "Material Control - Manage";
 }
 
 <h1>Manage</h1>
+<manage-component></manage-component>
