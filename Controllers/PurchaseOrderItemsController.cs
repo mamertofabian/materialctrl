@@ -2,6 +2,8 @@
 using MaterialCtrl.Entities;
 using MaterialCtrl.Services;
 using MaterialCtrl.ViewModels;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,6 +15,7 @@ using System.Threading.Tasks;
 namespace MaterialCtrl.Controllers
 {
     [Route("/api/purchaseorders/{orderid}/items")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class PurchaseOrderItemsController : Controller
     {
         private readonly IPurchaseOrderRepository _orderRepository;

@@ -4,10 +4,12 @@ using MaterialCtrl.Services;
 using MaterialCtrl.ViewModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MaterialCtrl.Controllers {
     [Route("api/[Controller]")]
@@ -17,18 +19,23 @@ namespace MaterialCtrl.Controllers {
         private readonly IPurchaseOrderRepository _orderRepository;
         private readonly ILogger<PurchaseOrdersController> _logger;
         private readonly IMapper _mapper;
+        private readonly UserManager<User> _userManager;
 
-        public PurchaseOrdersController(IPurchaseOrderRepository orderRepository, ILogger<PurchaseOrdersController> logger, IMapper mapper) {
+        public PurchaseOrdersController(IPurchaseOrderRepository orderRepository, 
+            ILogger<PurchaseOrdersController> logger, IMapper mapper,
+            UserManager<User> userManager) {
             _orderRepository = orderRepository;
             _logger = logger;
             _mapper = mapper;
+            _userManager = userManager;
         }
 
         [HttpGet]
         public IActionResult Get(bool includeItems = true) {
             try {
                 var results = _orderRepository.GetAllOrders(includeItems);
-                return base.Ok(_mapper.Map<IEnumerable<PurchaseOrder>, IEnumerable<PurchaseOrderViewModel>>(results));
+                return base.Ok(_mapper.Map<IEnumerable<PurchaseOrder>, 
+                    IEnumerable<PurchaseOrderViewModel>>(results));
             }
             catch (Exception ex) {
                 const string error = "Failed to get orders";
@@ -56,7 +63,7 @@ namespace MaterialCtrl.Controllers {
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] PurchaseOrderViewModel model) {
+        public async Task<IActionResult> Post([FromBody] PurchaseOrderViewModel model) {
             const string error = "Failed to save a new order";
 
             try {
@@ -66,6 +73,9 @@ namespace MaterialCtrl.Controllers {
                     if (newOrder.OrderDate == DateTime.MinValue) {
                         newOrder.OrderDate = DateTime.Now;
                     }
+
+                    var currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
+                    newOrder.User = currentUser;
 
                     newOrder = _orderRepository.AddOrder(newOrder);
 
