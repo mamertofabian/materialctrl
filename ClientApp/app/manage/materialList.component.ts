@@ -1,5 +1,6 @@
 ﻿import { Component, OnInit } from "@angular/core"
 import { DataService } from "../shared/dataService";
+import { Material } from "../shared/material";
 
 @Component({
     selector: "material-list",
@@ -10,7 +11,7 @@ export class MaterialList implements OnInit {
     constructor(private data: DataService) {
     }
 
-    public materials = [];
+    public materials: Material[] = [];
 
     ngOnInit(): void {
         this.data.loadMaterials()
