@@ -8,7 +8,11 @@
       "sourceRoot": "ClientApp",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -23,7 +27,7 @@
               "ClientApp/assets"
             ],
             "styles": [
-              "ClientApp/styles.css"
+              "ClientApp/styles.scss"
             ],
             "scripts": []
           },
@@ -72,7 +76,7 @@
             "tsConfig": "ClientApp/tsconfig.spec.json",
             "karmaConfig": "ClientApp/karma.conf.js",
             "styles": [
-              "ClientApp/styles.css"
+              "ClientApp/styles.scss"
             ],
             "scripts": [],
             "assets": [

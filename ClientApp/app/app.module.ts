@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { AgGridModule } from 'ag-grid-angular';
 import { MaterialList } from './manage/materialList.component';
 import { DataService } from './shared/dataService';
 
@@ -13,7 +14,8 @@ import { DataService } from './shared/dataService';
     ],
     imports: [
         BrowserModule,
-        HttpClientModule
+        HttpClientModule,
+        AgGridModule.withComponents([])
     ],
     providers: [
         DataService

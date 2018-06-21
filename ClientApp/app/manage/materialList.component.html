@@ -3,3 +3,11 @@
         <li *ngFor="let p of materials">{{ p.name }}: {{ p.description }}</li>
     </ul>
 </div>
+
+<ag-grid-angular 
+    style="width: 500px; height: 500px;" 
+    class="ag-theme-balham"
+    [rowData]="materials" 
+    [columnDefs]="columnDefs"
+    >
+</ag-grid-angular>

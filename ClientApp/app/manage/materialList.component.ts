@@ -13,6 +13,11 @@ export class MaterialList implements OnInit {
 
     public materials: Material[] = [];
 
+    columnDefs = [
+        { headerName: 'Material Name', field: 'name' },
+        { headerName: 'Description', field: 'description' }
+    ]
+
     ngOnInit(): void {
         this.data.loadMaterials()
             .subscribe(success => {
