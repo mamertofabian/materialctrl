@@ -7,7 +7,7 @@ import { Material } from "../shared/material";
     templateUrl: "materialList.component.html",
     styleUrls: []
 })
-export class MaterialList implements OnInit {
+export class MaterialListComponent implements OnInit {
     constructor(private data: DataService) {
     }
 
