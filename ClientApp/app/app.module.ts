@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AgGridModule } from 'ag-grid-angular';
-import { MaterialListComponent } from './manage/materialList.component';
 import { DataService } from './shared/dataService';
 import { ThemeModule } from './theme/theme.module';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -18,7 +17,6 @@ import { ReceivingComponent } from './receiving/receiving.component';
 @NgModule({
     declarations: [
         AppComponent,
-        MaterialListComponent,
         NavbarComponent,
         DashboardComponent,
         MaterialsComponent,

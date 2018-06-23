@@ -1,3 +1,18 @@
-<p>
-  materials works!
-</p>
+<mat-card>
+    <mat-card-title-group>
+        <mat-card-title>
+            Materials List
+        </mat-card-title>
+        <mat-card-subtitle>
+            Add, remove, or update the master list of materials
+        </mat-card-subtitle>
+    </mat-card-title-group>
+    
+    <mat-card-content>
+        <ag-grid-angular style="width: 500px; height: 500px;"
+            class="ag-theme-balham"
+            [rowData]="materials"
+            [columnDefs]="columnDefs">
+        </ag-grid-angular>
+    </mat-card-content>
+</mat-card>
