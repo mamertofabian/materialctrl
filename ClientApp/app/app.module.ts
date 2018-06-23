@@ -9,15 +9,25 @@ import { MaterialListComponent } from './manage/materialList.component';
 import { DataService } from './shared/dataService';
 import { ThemeModule } from './theme/theme.module';
 import { NavbarComponent } from './navbar/navbar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MaterialsComponent } from './materials/materials.component';
+import { SuppliersComponent } from './suppliers/suppliers.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ReceivingComponent } from './receiving/receiving.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         MaterialListComponent,
-        NavbarComponent
+        NavbarComponent,
+        DashboardComponent,
+        MaterialsComponent,
+        SuppliersComponent,
+        ReceivingComponent
     ],
     imports: [
         BrowserModule,
+        AppRoutingModule,
         HttpClientModule,
         AgGridModule.withComponents([]),
         BrowserAnimationsModule,
