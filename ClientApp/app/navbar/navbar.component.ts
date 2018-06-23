@@ -9,6 +9,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 export class NavbarComponent implements OnInit {
     mobileQuery: MediaQueryList;
     private _mobileQueryListener: () => void;
+    panelOpenState: boolean = false;
 
     constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
