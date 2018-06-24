@@ -1,17 +1,14 @@
-﻿@model IEnumerable<Project>
+﻿@section Scripts {
+    <script src="~/ClientApp/dist/polyfills.js"></script>
+    <script src="~/ClientApp/dist/styles.js"></script>
+    <script src="~/ClientApp/dist/vendor.js"></script>
+    <script src="~/ClientApp/dist/main.js"></script>
+    <script src="~/ClientApp/dist/runtime.js"></script>
+}
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>Material Control</title>
-</head>
-<body>
-    <table>
-        @foreach (var pj in Model) {
-            <tr>
-                <td>@pj.Id</td>
-                <td>@pj.Name</td>
-            </tr>
-        }
-    </table>
-</body>
-</html>
+@{
+    ViewBag.Title = "Material Control";
+}
+
+<base href="/">
+<app-component></app-component>

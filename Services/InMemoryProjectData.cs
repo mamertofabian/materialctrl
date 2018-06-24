@@ -3,22 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MaterialCtrl.Models;
+using MaterialCtrl.Entities;
 
 namespace MaterialCtrl.Services
 {
-    public class InMemoryProjectData : IProjectData {
-        private List<Project> _projectData;
+    //public class InMemoryProjectData : IProjectData {
+    //    private List<Project> _projects;
 
-        public InMemoryProjectData() {
-            _projectData = new List<Project> {
-                new Project{ Id = 1, Name = "Tank project"},
-                new Project{ Id = 2, Name = "Roof project"}
-            };
-        }
+    //    public InMemoryProjectData() {
+    //        _projects = new List<Project> {
+    //            new Project{ Id = 1, Name = "Tank project"},
+    //            new Project{ Id = 2, Name = "Roof project"}
+    //        };
+    //    }
 
-        public IEnumerable<Project> GetAll() {
-            return _projectData.OrderBy(p => p.Name);
-        }
-    }
+    //    public Project Add(Project project) {
+    //        project.Id = _projects.Max(p => p.Id) + 1;
+    //        _projects.Add(project);
+
+    //        return project;
+    //    }
+
+    //    public Project Get(int id) {
+    //        return _projects.FirstOrDefault(p => p.Id == id);
+    //    }
+
+    //    public IEnumerable<Project> GetAll() {
+    //        return _projects.OrderBy(p => p.Name);
+    //    }
+
+    //    public Project Update(Project project) {
+    //        throw new NotImplementedException();
+    //    }
+    //}
 }

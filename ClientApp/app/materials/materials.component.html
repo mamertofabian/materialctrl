@@ -1,0 +1,35 @@
+<mat-card>
+    <mat-card-title-group>
+        <mat-card-title>
+            Materials List
+        </mat-card-title>
+        <mat-card-subtitle>
+            Add, remove, or update the master list of materials
+        </mat-card-subtitle>
+    </mat-card-title-group>
+
+    <mat-card-actions class="card-action">
+        <button mat-raised-button color="accent">Add</button>
+    </mat-card-actions>
+
+    <mat-card-content>
+        <ag-grid-angular style="width: 100%; height: 500px;"
+                         class="ag-theme-balham"
+                         [rowData]="materials"
+                         [columnDefs]="columnDefs">
+        </ag-grid-angular>
+        <!--<table mat-table [dataSource]="materials">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef> Description </th>
+                <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>-->
+    </mat-card-content>
+</mat-card>
