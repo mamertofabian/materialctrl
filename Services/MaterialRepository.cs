@@ -7,12 +7,12 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace MaterialCtrl.Services {
-    public class SqlMaterialData : IMaterialData
+    public class MaterialRepository : IMaterialRepository
     {
         private readonly MaterialCtrlDbContext _context;
-        private readonly ILogger<SqlMaterialData> _logger;
+        private readonly ILogger<MaterialRepository> _logger;
 
-        public SqlMaterialData(MaterialCtrlDbContext context, ILogger<SqlMaterialData> logger) {
+        public MaterialRepository(MaterialCtrlDbContext context, ILogger<MaterialRepository> logger) {
             _context = context;
             _logger = logger;
         }

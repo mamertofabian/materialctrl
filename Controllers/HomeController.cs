@@ -8,10 +8,10 @@ namespace MaterialCtrl.Controllers {
     [Authorize]
     public class HomeController : Controller
     {
-        private readonly IProjectData _projectData;
+        private readonly IProjectRepository _projectData;
         private readonly IGreeter _greeter;
 
-        public HomeController(IProjectData projectData, IGreeter greeter) {
+        public HomeController(IProjectRepository projectData, IGreeter greeter) {
             _projectData = projectData;
             _greeter = greeter;
         }

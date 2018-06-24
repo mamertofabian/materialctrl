@@ -6,10 +6,10 @@ using System;
 namespace MaterialCtrl.Controllers {
     [Route("api/[Controller]")]
     public class MaterialsController : Controller {
-        private readonly IMaterialData _materialData;
+        private readonly IMaterialRepository _materialData;
         private readonly ILogger<MaterialsController> _logger;
 
-        public MaterialsController(IMaterialData materialData, ILogger<MaterialsController> logger) {
+        public MaterialsController(IMaterialRepository materialData, ILogger<MaterialsController> logger) {
             _materialData = materialData;
             _logger = logger;
         }

@@ -16,7 +16,9 @@
         <ag-grid-angular style="width: 100%; height: 500px;"
                          class="ag-theme-balham"
                          [rowData]="materials"
-                         [columnDefs]="columnDefs">
+                         [columnDefs]="columnDefs"
+                         [enableColResize]="true"
+                         (gridReady)="onGridReady($event)">
         </ag-grid-angular>
         <!--<table mat-table [dataSource]="materials">
             <ng-container matColumnDef="name">
