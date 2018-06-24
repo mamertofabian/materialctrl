@@ -81,6 +81,9 @@ namespace MaterialCtrl {
 
         private void ConfigureRoutes(IRouteBuilder routeBuilder) {
             routeBuilder.MapRoute("Default", "{controller=Home}/{action=Index}/{id?}");
+            routeBuilder.MapSpaFallbackRoute(
+                    name: "spa-fallback",
+                    defaults: new { controller = "Home", action = "Index" });
         }
     }
 }

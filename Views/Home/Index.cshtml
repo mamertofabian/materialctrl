@@ -1,21 +1,14 @@
-﻿@model HomeIndexViewModel
+﻿@section Scripts {
+    <script src="~/ClientApp/dist/polyfills.js"></script>
+    <script src="~/ClientApp/dist/styles.js"></script>
+    <script src="~/ClientApp/dist/vendor.js"></script>
+    <script src="~/ClientApp/dist/main.js"></script>
+    <script src="~/ClientApp/dist/runtime.js"></script>
+}
 
 @{
     ViewBag.Title = "Material Control";
 }
 
-<h1>All Projects</h1>
-
-@foreach (var project in Model.Projects) {
-    @Html.Partial("_Summary", project)
-}
-
-<div>
-    <a class="btn btn-primary" asp-action="Create"><i class="fa fa-plus"></i> Add Project</a>
-</div>
-
-@*<div>
-    @section footer{
-        <div class="text-center">Copyright 2018 - Codefrost</div>
-    }
-</div>*@
+<base href="/">
+<app-component></app-component>

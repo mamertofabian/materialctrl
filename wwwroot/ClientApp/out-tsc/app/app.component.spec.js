@@ -15,10 +15,10 @@ describe('AppComponent', function () {
         var app = fixture.debugElement.componentInstance;
         expect(app).toBeTruthy();
     }));
-    it("should have as title 'app'", testing_1.async(function () {
+    it("should have as title 'material-app'", testing_1.async(function () {
         var fixture = testing_1.TestBed.createComponent(app_component_1.AppComponent);
         var app = fixture.debugElement.componentInstance;
-        expect(app.title).toEqual('app');
+        expect(app.title).toEqual('material-app');
     }));
     it('should render title in a h1 tag', testing_1.async(function () {
         var fixture = testing_1.TestBed.createComponent(app_component_1.AppComponent);

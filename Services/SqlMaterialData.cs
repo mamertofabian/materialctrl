@@ -31,7 +31,7 @@ namespace MaterialCtrl.Services {
         public IEnumerable<Material> GetAll() {
             try {
                 _logger.LogInformation("GetAll materials was called");
-                return _context.Materials.OrderBy(p => p.Name);
+                return _context.Materials.OrderBy(p => p.PartName);
             }
             catch (Exception ex) {
                 _logger.LogError($"Failed to get all materials: {ex}");

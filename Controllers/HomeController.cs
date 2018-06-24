@@ -1,9 +1,11 @@
 ﻿using MaterialCtrl.Entities;
 using MaterialCtrl.Services;
 using MaterialCtrl.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MaterialCtrl.Controllers {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IProjectData _projectData;
