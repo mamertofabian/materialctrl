@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace MaterialCtrl.Services {
-    public interface IMaterialData
+    public interface IMaterialRepository
     {
         IEnumerable<Material> GetAll();
         Material Get(int id);

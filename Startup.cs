@@ -47,8 +47,8 @@ namespace MaterialCtrl {
 
             services.AddAutoMapper();
 
-            services.AddScoped<IProjectData, SqlProjectData>();
-            services.AddScoped<IMaterialData, SqlMaterialData>();
+            services.AddScoped<IProjectRepository, ProjectRepository>();
+            services.AddScoped<IMaterialRepository, MaterialRepository>();
             services.AddScoped<IPurchaseOrderRepository, PurchaseOrderRepository>();
             services.AddMvc(options => {
                 if (_environment.IsProduction()) {

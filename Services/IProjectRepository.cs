@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MaterialCtrl.Services
 {
-    public interface IProjectData
+    public interface IProjectRepository
     {
         IEnumerable<Project> GetAll();
         Project Get(int id);
