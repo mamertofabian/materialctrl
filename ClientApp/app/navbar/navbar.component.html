@@ -34,6 +34,7 @@
                         </mat-panel-title>
                     </mat-expansion-panel-header>
                     <mat-nav-list role="navigation">
+                        <a mat-list-item routerLink="/projects" [class.activated]="currentUrl == '/projects'">Projects</a>
                         <a mat-list-item routerLink="/materials" [class.activated]="currentUrl == '/materials'">Materials</a>
                         <a mat-list-item routerLink="/suppliers" [class.activated]="currentUrl == '/suppliers'">Suppliers</a>
                     </mat-nav-list>

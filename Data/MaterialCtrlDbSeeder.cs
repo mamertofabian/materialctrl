@@ -60,7 +60,8 @@ namespace MaterialCtrl.Data {
             }
 
             var defaultMaterial = new Material {
-                Name = "Material 1",
+                PartNumber = "000-001",
+                PartName = "Material 1",
                 CreatedBy = user,
                 CreatedOn = DateTime.Now,
                 Unit = pieceUnit

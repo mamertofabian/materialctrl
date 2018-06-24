@@ -13,6 +13,7 @@ import { MaterialsComponent } from './materials/materials.component';
 import { SuppliersComponent } from './suppliers/suppliers.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReceivingComponent } from './receiving/receiving.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { ReceivingComponent } from './receiving/receiving.component';
         DashboardComponent,
         MaterialsComponent,
         SuppliersComponent,
-        ReceivingComponent
+        ReceivingComponent,
+        ProjectsComponent
     ],
     imports: [
         BrowserModule,

@@ -8,19 +8,44 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
+var http_1 = require("@angular/common/http");
+var animations_1 = require("@angular/platform-browser/animations");
 var app_component_1 = require("./app.component");
+var ag_grid_angular_1 = require("ag-grid-angular");
+var dataService_1 = require("./shared/dataService");
+var theme_module_1 = require("./theme/theme.module");
+var navbar_component_1 = require("./navbar/navbar.component");
+var dashboard_component_1 = require("./dashboard/dashboard.component");
+var materials_component_1 = require("./materials/materials.component");
+var suppliers_component_1 = require("./suppliers/suppliers.component");
+var app_routing_module_1 = require("./app-routing.module");
+var receiving_component_1 = require("./receiving/receiving.component");
+var projects_component_1 = require("./projects/projects.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             declarations: [
-                app_component_1.AppComponent
+                app_component_1.AppComponent,
+                navbar_component_1.NavbarComponent,
+                dashboard_component_1.DashboardComponent,
+                materials_component_1.MaterialsComponent,
+                suppliers_component_1.SuppliersComponent,
+                receiving_component_1.ReceivingComponent,
+                projects_component_1.ProjectsComponent
             ],
             imports: [
-                platform_browser_1.BrowserModule
+                platform_browser_1.BrowserModule,
+                app_routing_module_1.AppRoutingModule,
+                http_1.HttpClientModule,
+                ag_grid_angular_1.AgGridModule.withComponents([]),
+                animations_1.BrowserAnimationsModule,
+                theme_module_1.ThemeModule
             ],
-            providers: [],
+            providers: [
+                dataService_1.DataService
+            ],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);

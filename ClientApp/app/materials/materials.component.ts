@@ -12,9 +12,24 @@ export class MaterialsComponent implements OnInit {
 
     public materials: Material[] = [];
 
+    //displayedColumns = ['name', 'description'];
+    //dataSource = this.materials;
+
     columnDefs = [
-        { headerName: 'Material Name', field: 'name' },
-        { headerName: 'Description', field: 'description' }
+        { headerName: 'Part Number', field: 'partNumber' },
+        { headerName: 'Part Name', field: 'partName' },
+        { headerName: 'Revision', field: 'revision' },
+        { headerName: 'Description', field: 'description' },
+        { headerName: 'Category', field: 'category' },
+        { headerName: 'Unit', field: 'unit' },
+        { headerName: 'Manufacturer', field: 'manufacturer' },
+        { headerName: 'Manufacturer Part Number', field: 'manufacturerPartNumber' },
+        { headerName: 'Procurement Type', field: 'procurementType' },
+        { headerName: 'Notes', field: 'notes' },
+        { headerName: 'Created On', field: 'createdOn' },
+        { headerName: 'Modified On', field: 'modifiedOn' },
+        { headerName: 'Created By', field: 'createdBy' },
+        { headerName: 'Modified By', field: 'modifiedBy' }
     ]
 
     ngOnInit(): void {
