@@ -3,19 +3,19 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
     MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule,
-    MatSidenavModule, MatListModule, MatExpansionModule, MatTableModule } from '@angular/material';
+    MatSidenavModule, MatListModule, MatExpansionModule, MatTableModule, MatDialogModule } from '@angular/material';
 
 @NgModule({
   imports: [
       CommonModule, MatButtonModule, MatToolbarModule, MatIconModule,
       MatCardModule, MatSidenavModule, MatListModule, MatExpansionModule,
-      MatTableModule
+      MatTableModule, MatDialogModule
     ],
   exports: [
       CommonModule, MatButtonModule, MatToolbarModule, MatIconModule,
       MatCardModule, MatSidenavModule, MatListModule, MatExpansionModule,
-      MatTableModule
+      MatTableModule, MatDialogModule
     ],
   declarations: []
 })
-export class ThemeModule { }
+export class AppUiModule { }

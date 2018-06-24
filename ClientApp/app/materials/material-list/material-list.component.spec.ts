@@ -1,20 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialListComponent } from './material-list.component';
 
-import { MaterialsComponent } from './materials.component';
-
-describe('MaterialsComponent', () => {
-  let component: MaterialsComponent;
-  let fixture: ComponentFixture<MaterialsComponent>;
+describe('MaterialListComponent', () => {
+    let component: MaterialListComponent;
+  let fixture: ComponentFixture<MaterialListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MaterialsComponent ]
+        declarations: [MaterialListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MaterialsComponent);
+      fixture = TestBed.createComponent(MaterialListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

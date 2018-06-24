@@ -1,10 +1,10 @@
-import { ThemeModule } from './theme.module';
+import { AppUiModule } from './theme.module';
 
 describe('ThemeModule', () => {
-  let themeModule: ThemeModule;
+  let themeModule: AppUiModule;
 
   beforeEach(() => {
-    themeModule = new ThemeModule();
+    themeModule = new AppUiModule();
   });
 
   it('should create an instance', () => {

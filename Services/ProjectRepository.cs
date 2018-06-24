@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace MaterialCtrl.Services {
-    public class SqlProjectData : IProjectData {
+    public class ProjectRepository : IProjectRepository {
         private readonly MaterialCtrlDbContext _context;
-        private readonly ILogger<SqlProjectData> _logger;
+        private readonly ILogger<ProjectRepository> _logger;
 
-        public SqlProjectData(MaterialCtrlDbContext context, ILogger<SqlProjectData> logger) {
+        public ProjectRepository(MaterialCtrlDbContext context, ILogger<ProjectRepository> logger) {
             _context = context;
             _logger = logger;
         }
