@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../core/dataService';
 import { Material } from '../../shared/material';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+
+import { MaterialDetailComponent } from '../material-detail/material-detail.component';
 
 @Component({
   selector: 'app-material-list',
@@ -32,7 +35,7 @@ export class MaterialListComponent implements OnInit {
         { headerName: 'Modified By', field: 'modifiedBy' }
     ]
 
-    constructor(private data: DataService) { }
+    constructor(private data: DataService, public dialog: MatDialog) { }
 
     ngOnInit(): void {
     }
@@ -61,4 +64,18 @@ export class MaterialListComponent implements OnInit {
             });
     }
 
+    openDialog(): void {
+        const dialogConfig = new MatDialogConfig();
+
+        let dialogRef = this.dialog.open(MaterialDetailComponent, {
+            autoFocus: true,
+            disableClose: true,
+            closeOnNavigation: true,
+            data: {}
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+        });
+    }
 }

@@ -11,38 +11,36 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/common/http");
 var animations_1 = require("@angular/platform-browser/animations");
 var app_component_1 = require("./app.component");
-var dataService_1 = require("./shared/dataService");
-var appUi_module_1 = require("./appUi/appUi.module");
+var shared_module_1 = require("./shared/shared.module");
+var core_module_1 = require("./core/core.module");
 var materials_module_1 = require("./materials/materials.module");
 var projects_module_1 = require("./projects/projects.module");
-var navbar_component_1 = require("./navbar/navbar.component");
-var dashboard_component_1 = require("./dashboard/dashboard.component");
-var suppliers_component_1 = require("./suppliers/suppliers.component");
+var dashboard_module_1 = require("./dashboard/dashboard.module");
+var suppliers_module_1 = require("./suppliers/suppliers.module");
+var receiving_module_1 = require("./receiving/receiving.module");
 var app_routing_module_1 = require("./app-routing.module");
-var receiving_component_1 = require("./receiving/receiving.component");
+var navbar_module_1 = require("./navbar/navbar.module");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             declarations: [
-                app_component_1.AppComponent,
-                navbar_component_1.NavbarComponent,
-                dashboard_component_1.DashboardComponent,
-                suppliers_component_1.SuppliersComponent,
-                receiving_component_1.ReceivingComponent
+                app_component_1.AppComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
                 app_routing_module_1.AppRoutingModule,
                 http_1.HttpClientModule,
                 animations_1.BrowserAnimationsModule,
-                appUi_module_1.AppUiModule,
+                shared_module_1.SharedModule,
+                core_module_1.CoreModule,
                 materials_module_1.MaterialsModule,
-                projects_module_1.ProjectsModule
-            ],
-            providers: [
-                dataService_1.DataService
+                projects_module_1.ProjectsModule,
+                dashboard_module_1.DashboardModule,
+                suppliers_module_1.SuppliersModule,
+                receiving_module_1.ReceivingModule,
+                navbar_module_1.NavbarModule
             ],
             bootstrap: [app_component_1.AppComponent]
         })

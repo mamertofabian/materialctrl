@@ -5,6 +5,7 @@ import { AppUiModule } from '../appUi/appUi.module';
 import { AgGridModule } from 'ag-grid-angular';
 
 import { MaterialListComponent } from './material-list/material-list.component';
+import { MaterialDetailComponent } from '../materials/material-detail/material-detail.component';
 
 
 @NgModule({
@@ -15,7 +16,11 @@ import { MaterialListComponent } from './material-list/material-list.component';
      AgGridModule.withComponents([]),
     ],
     declarations: [
-        MaterialListComponent
+        MaterialListComponent,
+        MaterialDetailComponent
+    ],
+    entryComponents: [
+        MaterialDetailComponent
     ],
     exports: [
         MaterialListComponent
