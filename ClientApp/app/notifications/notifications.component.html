@@ -1,0 +1,8 @@
+<div *ngIf="notificationService.messages.length">
+    <mat-divider></mat-divider>
+    <span>Notifications [temporary]</span>
+    <ul>
+        <li *ngFor='let message of notificationService.messages'>{{ message }}</li>
+    </ul>
+    <button (click)="notificationService.clear()">Clear</button>
+</div>

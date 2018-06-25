@@ -14,6 +14,7 @@ import { SuppliersModule } from './suppliers/suppliers.module';
 import { ReceivingModule } from './receiving/receiving.module';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarModule } from './navbar/navbar.module';
+import { NotificationsModule } from './notifications/notifications.module';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import { NavbarModule } from './navbar/navbar.module';
         DashboardModule,
         SuppliersModule,
         ReceivingModule,
-        NavbarModule
+        NavbarModule,
+        NotificationsModule
     ],
     bootstrap: [AppComponent]
 })

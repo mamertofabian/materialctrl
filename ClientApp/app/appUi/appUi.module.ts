@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
     MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule,
     MatSidenavModule, MatListModule, MatExpansionModule, MatTableModule, 
-    MatDialogModule, MatInputModule} from '@angular/material';
+    MatDialogModule, MatInputModule, MatSnackBarModule } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -12,13 +12,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       SharedModule, MatButtonModule, MatToolbarModule, MatIconModule,
       MatCardModule, MatSidenavModule, MatListModule, MatExpansionModule,
       MatTableModule, MatDialogModule, FormsModule, ReactiveFormsModule,
-      MatInputModule
+      MatInputModule, MatSnackBarModule
     ],
   exports: [
       MatButtonModule, MatToolbarModule, MatIconModule,
       MatCardModule, MatSidenavModule, MatListModule, MatExpansionModule,
       MatTableModule, MatDialogModule, FormsModule, ReactiveFormsModule,
-      MatInputModule
+      MatInputModule, MatSnackBarModule
     ],
   declarations: []
 })
