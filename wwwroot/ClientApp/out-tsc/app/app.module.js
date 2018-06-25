@@ -11,16 +11,15 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/common/http");
 var animations_1 = require("@angular/platform-browser/animations");
 var app_component_1 = require("./app.component");
-var ag_grid_angular_1 = require("ag-grid-angular");
 var dataService_1 = require("./shared/dataService");
-var theme_module_1 = require("./theme/theme.module");
+var appUi_module_1 = require("./appUi/appUi.module");
+var materials_module_1 = require("./materials/materials.module");
+var projects_module_1 = require("./projects/projects.module");
 var navbar_component_1 = require("./navbar/navbar.component");
 var dashboard_component_1 = require("./dashboard/dashboard.component");
-var materials_component_1 = require("./materials/materials.component");
 var suppliers_component_1 = require("./suppliers/suppliers.component");
 var app_routing_module_1 = require("./app-routing.module");
 var receiving_component_1 = require("./receiving/receiving.component");
-var projects_component_1 = require("./projects/projects.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -30,18 +29,17 @@ var AppModule = /** @class */ (function () {
                 app_component_1.AppComponent,
                 navbar_component_1.NavbarComponent,
                 dashboard_component_1.DashboardComponent,
-                materials_component_1.MaterialsComponent,
                 suppliers_component_1.SuppliersComponent,
-                receiving_component_1.ReceivingComponent,
-                projects_component_1.ProjectsComponent
+                receiving_component_1.ReceivingComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
                 app_routing_module_1.AppRoutingModule,
                 http_1.HttpClientModule,
-                ag_grid_angular_1.AgGridModule.withComponents([]),
                 animations_1.BrowserAnimationsModule,
-                theme_module_1.ThemeModule
+                appUi_module_1.AppUiModule,
+                materials_module_1.MaterialsModule,
+                projects_module_1.ProjectsModule
             ],
             providers: [
                 dataService_1.DataService

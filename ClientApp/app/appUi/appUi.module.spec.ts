@@ -1,4 +1,4 @@
-import { AppUiModule } from './theme.module';
+import { AppUiModule } from "./appUi.module";
 
 describe('ThemeModule', () => {
   let themeModule: AppUiModule;
