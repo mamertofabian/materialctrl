@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
 import { MaterialRoutingModule } from './material-routing.module';
 import { AppUiModule } from '../appUi/appUi.module';
 import { AgGridModule } from 'ag-grid-angular';
 
 import { MaterialListComponent } from './material-list/material-list.component';
 
+
 @NgModule({
     imports: [
-     CommonModule,
+     SharedModule,
      AppUiModule,
      MaterialRoutingModule,
      AgGridModule.withComponents([]),

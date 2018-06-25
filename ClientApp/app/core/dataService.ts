@@ -2,7 +2,7 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import 'rxjs/add/operator/map';
-import { Material } from "./material";
+import { Material } from "../shared/material";
 
 @Injectable()
 export class DataService {

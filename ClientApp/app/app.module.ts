@@ -4,7 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { DataService } from './shared/dataService';
+
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
 import { MaterialsModule } from './materials/materials.module';
 import { ProjectsModule } from './projects/projects.module';
 import { DashboardModule } from './dashboard/dashboard.module';
@@ -22,15 +24,14 @@ import { NavbarModule } from './navbar/navbar.module';
         AppRoutingModule,
         HttpClientModule,
         BrowserAnimationsModule,
+        SharedModule,
+        CoreModule,
         MaterialsModule,
         ProjectsModule,
         DashboardModule,
         SuppliersModule,
         ReceivingModule,
         NavbarModule
-    ],
-    providers: [
-        DataService
     ],
     bootstrap: [AppComponent]
 })

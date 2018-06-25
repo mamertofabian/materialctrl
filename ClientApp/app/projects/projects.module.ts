@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
 import { ProjectsComponent } from './projects.component';
 import { ProjectsRoutingModule } from './projects-routing.module';
 import { AppUiModule } from '../appUi/appUi.module';
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     ProjectsRoutingModule,
     AppUiModule
   ],
