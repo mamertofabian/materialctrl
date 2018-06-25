@@ -15,6 +15,7 @@ import { ReceivingModule } from './receiving/receiving.module';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarModule } from './navbar/navbar.module';
 import { NotificationsModule } from './notifications/notifications.module';
+import { PromptModule } from './prompt/prompt.module';
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import { NotificationsModule } from './notifications/notifications.module';
         SuppliersModule,
         ReceivingModule,
         NavbarModule,
-        NotificationsModule
+        NotificationsModule,
+        PromptModule
     ],
     bootstrap: [AppComponent]
 })

@@ -20,6 +20,8 @@ var suppliers_module_1 = require("./suppliers/suppliers.module");
 var receiving_module_1 = require("./receiving/receiving.module");
 var app_routing_module_1 = require("./app-routing.module");
 var navbar_module_1 = require("./navbar/navbar.module");
+var notifications_module_1 = require("./notifications/notifications.module");
+var prompt_module_1 = require("./prompt/prompt.module");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -40,7 +42,9 @@ var AppModule = /** @class */ (function () {
                 dashboard_module_1.DashboardModule,
                 suppliers_module_1.SuppliersModule,
                 receiving_module_1.ReceivingModule,
-                navbar_module_1.NavbarModule
+                navbar_module_1.NavbarModule,
+                notifications_module_1.NotificationsModule,
+                prompt_module_1.PromptModule
             ],
             bootstrap: [app_component_1.AppComponent]
         })

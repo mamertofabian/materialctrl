@@ -1,15 +1,18 @@
 <h1 mat-dialog-title>Add New Material</h1>
 <div mat-dialog-content>
     <form class="mc-form">
-        <mat-form-field class="mc-full-width">
-            <input matInput placeholder="Part number" [formControl]="partNumberFormControl"
+        <mat-form-field>
+            <input matInput placeholder="Part number" [formControl]="partNumber"
                    [errorStateMatcher]="matcher" required />
-            <mat-error *ngIf="partNumberFormControl.invalid">{{getErrorMessage(partNumberFormControl, 'Part number')}}</mat-error>
+            <mat-error *ngIf="partNumber.invalid">{{getErrorMessage(partNumber, 'Part number')}}</mat-error>
         </mat-form-field>
         <mat-form-field class="mc-full-width">
-            <input matInput placeholder="Part name" [formControl]="partNameFormControl"
+            <input matInput placeholder="Part name" [formControl]="partName"
                    [errorStateMatcher]="matcher" required />
-            <mat-error *ngIf="partNameFormControl.invalid">{{getErrorMessage(partNameFormControl, 'Part name')}}</mat-error>
+            <mat-error *ngIf="partName.invalid">{{getErrorMessage(partName, 'Part name')}}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="mc-full-width">
+            <input matInput placeholder="Description" [formControl]="description" />
         </mat-form-field>
     </form>
 </div>

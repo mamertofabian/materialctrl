@@ -39,6 +39,14 @@ namespace MaterialCtrl.Services {
             }
         }
 
+        public void RemoveMaterialById(int id) {
+            var material = _context.Materials.FirstOrDefault(m => m.Id == id);
+            if (material != null) {
+                _context.Materials.Remove(material);
+                _context.SaveChanges();
+            }
+        }
+
         public Material Update(Material material) {
             _context.Attach(material).State = EntityState.Modified;
             _context.SaveChanges();

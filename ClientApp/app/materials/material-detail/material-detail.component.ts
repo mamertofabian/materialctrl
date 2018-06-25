@@ -1,6 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, ErrorStateMatcher, MatSnackBar } from '@angular/material';
 import { FormControl, Validators, FormGroupDirective, NgForm } from '@angular/forms';
+import { DataService } from '../../core/dataService';
+import { Material } from '../../shared/material';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -15,21 +17,34 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./material-detail.component.scss']
 })
 export class MaterialDetailComponent implements OnInit {
-    partNumberFormControl = new FormControl('', [
+    partNumber = new FormControl('', [
         Validators.required
     ]);
 
-    partNameFormControl = new FormControl('', [
+    partName = new FormControl('', [
         Validators.required
     ]);
+
+    description = new FormControl();
+
+    newMaterial = new Material();
 
     matcher = new MyErrorStateMatcher();
 
     constructor(public dialogRef: MatDialogRef<MaterialDetailComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: any, public snackBar: MatSnackBar) { }
+        @Inject(MAT_DIALOG_DATA) public data: any, public snackBar: MatSnackBar,
+        private dataService: DataService) { }
 
     save(): void {
-        this.openSnackBar('Clicked New Material save button', 'Save');
+        this.newMaterial.partNumber = this.partNumber.value;
+        this.newMaterial.partName = this.partName.value;
+        this.newMaterial.description = this.description.value;
+
+        this.dataService.addMaterial(this.newMaterial)
+            .subscribe(mat => {
+                this.openSnackBar(`Added new material: ${mat.partName}`, 'Save');
+                this.dialogRef.close(mat);
+            });
     }
 
     cancel(): void {
