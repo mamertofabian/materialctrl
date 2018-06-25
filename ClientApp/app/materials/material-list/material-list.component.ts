@@ -73,17 +73,15 @@ export class MaterialListComponent implements OnInit {
         var selectedRows = this.gridApi.getSelectedRows();
         if (selectedRows.length > 0) {
             this.selectedRow = selectedRows[0];
+            console.log(`Selected row: ${this.selectedRow.partNumber}`);
         } else {
             this.selectedRow = null;
         }
-
-        console.log(`Selected row: ${this.selectedRow.partNumber}`);
     }
 
     delete(): void {
         this.data.deleteMaterial(this.selectedRow.id)
             .subscribe(success => {
-                console.log(success)
                 if (success) {
                     this.openSnackBar(`${this.selectedRow.partNumber} was deleted`, "Delete");
                     var selectedData = this.gridApi.getSelectedRows();

@@ -27,7 +27,7 @@ export class DataService {
 
     addMaterial(material: Material): Observable<Material> {
         return this.http.post<Material>("api/materials", material, httpOptions).pipe(
-            tap(_ => this.log(`added material w/ id=${material.id}`)),
+            tap(mat => this.log(`added material w/ id=${mat.id}`)),
             catchError(this.handleError<Material>('addMaterial'))
         );
     }
