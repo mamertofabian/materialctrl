@@ -1,20 +1,24 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
     MatButtonModule, MatToolbarModule, MatIconModule, MatCardModule,
-    MatSidenavModule, MatListModule, MatExpansionModule, MatTableModule, MatDialogModule } from '@angular/material';
+    MatSidenavModule, MatListModule, MatExpansionModule, MatTableModule, 
+    MatDialogModule, MatInputModule, MatSnackBarModule } from '@angular/material';
+import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
-      CommonModule, MatButtonModule, MatToolbarModule, MatIconModule,
+      SharedModule, MatButtonModule, MatToolbarModule, MatIconModule,
       MatCardModule, MatSidenavModule, MatListModule, MatExpansionModule,
-      MatTableModule, MatDialogModule
+      MatTableModule, MatDialogModule, FormsModule, ReactiveFormsModule,
+      MatInputModule, MatSnackBarModule
     ],
   exports: [
-      CommonModule, MatButtonModule, MatToolbarModule, MatIconModule,
+      MatButtonModule, MatToolbarModule, MatIconModule,
       MatCardModule, MatSidenavModule, MatListModule, MatExpansionModule,
-      MatTableModule, MatDialogModule
+      MatTableModule, MatDialogModule, FormsModule, ReactiveFormsModule,
+      MatInputModule, MatSnackBarModule
     ],
   declarations: []
 })

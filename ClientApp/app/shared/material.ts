@@ -1,4 +1,4 @@
-﻿export interface Material {
+﻿export class Material {
     // use http://www.json2ts.com/ to convert entities to TS interface
     id: number;
     partNumber: string;

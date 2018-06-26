@@ -260,4 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /wwwroot/ClientApp/dist
-/wwwroot/ClientApp/out-tsc/app
+/wwwroot/ClientApp/out-tsc

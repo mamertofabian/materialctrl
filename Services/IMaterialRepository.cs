@@ -8,5 +8,6 @@ namespace MaterialCtrl.Services {
         Material Get(int id);
         Material Add(Material material);
         Material Update(Material material);
+        void RemoveMaterialById(int id);
     }
 }

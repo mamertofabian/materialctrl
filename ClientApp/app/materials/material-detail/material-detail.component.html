@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>{{ operation }} Material{{ partNumberTitle }}</h1>
+<div mat-dialog-content>
+    <form class="mc-form">
+        <mat-form-field>
+            <input matInput placeholder="Part number" [formControl]="partNumber"
+                   [errorStateMatcher]="matcher" required />
+            <mat-error *ngIf="partNumber.invalid">{{getErrorMessage(partNumber, 'Part number')}}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="mc-full-width">
+            <input matInput placeholder="Part name" [formControl]="partName"
+                   [errorStateMatcher]="matcher" required />
+            <mat-error *ngIf="partName.invalid">{{getErrorMessage(partName, 'Part name')}}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="mc-full-width">
+            <input matInput placeholder="Description" [formControl]="description" />
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="save()">Save</button>
+    <button mat-button (click)="cancel()">Cancel</button>
+</div>

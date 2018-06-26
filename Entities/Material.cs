@@ -18,7 +18,7 @@ namespace MaterialCtrl.Entities {
         public ProcurementType ProcurementType { get; set; }
         public string Notes { get; set; }
         public DateTime CreatedOn { get; set; }
-        public DateTime ModifiedOn { get; set; }
+        public DateTime? ModifiedOn { get; set; }
         public User CreatedBy { get; set; }
         public User ModifiedBy { get; set; }
     }

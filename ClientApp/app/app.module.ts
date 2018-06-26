@@ -4,36 +4,38 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { DataService } from './shared/dataService';
-import { AppUiModule } from './appUi/appUi.module';
-import { MaterialsModule } from './materials/materials.module';
 
-import { NavbarComponent } from './navbar/navbar.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { SuppliersComponent } from './suppliers/suppliers.component';
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
+import { MaterialsModule } from './materials/materials.module';
+import { ProjectsModule } from './projects/projects.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { SuppliersModule } from './suppliers/suppliers.module';
+import { ReceivingModule } from './receiving/receiving.module';
 import { AppRoutingModule } from './app-routing.module';
-import { ReceivingComponent } from './receiving/receiving.component';
-import { ProjectsComponent } from './projects/projects.component';
+import { NavbarModule } from './navbar/navbar.module';
+import { NotificationsModule } from './notifications/notifications.module';
+import { PromptModule } from './prompt/prompt.module';
 
 @NgModule({
     declarations: [
-        AppComponent,
-        NavbarComponent,
-        DashboardComponent,
-        SuppliersComponent,
-        ReceivingComponent,
-        ProjectsComponent
+        AppComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
         BrowserAnimationsModule,
-        AppUiModule,
-        MaterialsModule
-    ],
-    providers: [
-        DataService
+        SharedModule,
+        CoreModule,
+        MaterialsModule,
+        ProjectsModule,
+        DashboardModule,
+        SuppliersModule,
+        ReceivingModule,
+        NavbarModule,
+        NotificationsModule,
+        PromptModule
     ],
     bootstrap: [AppComponent]
 })
