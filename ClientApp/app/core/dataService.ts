@@ -14,9 +14,10 @@ export class DataService {
     constructor(private http: HttpClient, private notificationService: NotificationService) { }
 
     public materials: Material[] = [];
+    private readonly materialsUrl = "api/materials";
 
     loadMaterials(): Observable<boolean> {
-        return this.http.get("api/materials").pipe(
+        return this.http.get(this.materialsUrl).pipe(
             tap(_ => this.log(`fetched materials`)),
             catchError(this.handleError('loadMaterials', [])),
             map((data: any[]) => {
@@ -26,14 +27,21 @@ export class DataService {
     }
 
     addMaterial(material: Material): Observable<Material> {
-        return this.http.post<Material>("api/materials", material, httpOptions).pipe(
+        return this.http.post<Material>(this.materialsUrl, material, httpOptions).pipe(
             tap(mat => this.log(`added material w/ id=${mat.id}`)),
             catchError(this.handleError<Material>('addMaterial'))
         );
     }
 
+    updateMaterial(material: Material): Observable<Material> {
+        return this.http.put<Material>(this.materialsUrl, material, httpOptions).pipe(
+            tap(_ => this.log(`updated material w/ id=${material.id}`)),
+            catchError(this.handleError<Material>('updateMaterial'))
+        );
+    }
+
     deleteMaterial(id: number): Observable<boolean> {
-        return this.http.delete(`api/materials/${id}`, httpOptions).pipe(
+        return this.http.delete(`${this.materialsUrl}/${id}`, httpOptions).pipe(
             tap(_ => this.log(`deleted material w/ id=${id}`)),
             catchError(this.handleError('deleteMaterial')),
             map(() => {

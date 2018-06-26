@@ -9,7 +9,8 @@
     </mat-card-title-group>
 
     <mat-card-actions class="card-action">
-        <button mat-raised-button color="primary" (click)="openDialog()">Add</button>
+        <button mat-raised-button color="primary" (click)="openDialog(true)">Add</button>
+        <button mat-raised-button color="primary" (click)="openDialog(false)" [disabled]="!selectedRow">Edit</button>
         <button mat-raised-button color="warn" (click)="confirmDelete()" [disabled]="!selectedRow">Delete</button>
     </mat-card-actions>
 
@@ -20,7 +21,9 @@
                          [columnDefs]="columnDefs"
                          [enableColResize]="true"
                          [rowSelection]="rowSelection"
+                         [enableSorting]="true"
                          (selectionChanged)="onSelectionChanged($event)"
+                         [getRowNodeId]="getRowNodeId"
                          (gridReady)="onGridReady($event)">
         </ag-grid-angular>
         <!--<table mat-table [dataSource]="materials">

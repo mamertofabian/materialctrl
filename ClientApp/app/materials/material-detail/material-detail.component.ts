@@ -17,38 +17,37 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./material-detail.component.scss']
 })
 export class MaterialDetailComponent implements OnInit {
+    partNumberTitle: string = "";
+    operation: string;
+    currentMaterial = new Material();
+    matcher = new MyErrorStateMatcher();
+
     partNumber = new FormControl('', [
         Validators.required
     ]);
-
     partName = new FormControl('', [
         Validators.required
     ]);
-
     description = new FormControl();
-
-    newMaterial = new Material();
-
-    matcher = new MyErrorStateMatcher();
 
     constructor(public dialogRef: MatDialogRef<MaterialDetailComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any, public snackBar: MatSnackBar,
         private dataService: DataService) { }
 
     save(): void {
-        this.newMaterial.partNumber = this.partNumber.value;
-        this.newMaterial.partName = this.partName.value;
-        this.newMaterial.description = this.description.value;
+        this.currentMaterial.partNumber = this.partNumber.value;
+        this.currentMaterial.partName = this.partName.value;
+        this.currentMaterial.description = this.description.value;
 
-        this.dataService.addMaterial(this.newMaterial)
-            .subscribe(mat => {
-                this.openSnackBar(`Added new material: ${mat.partName}`, 'Save');
-                this.dialogRef.close(mat);
-            });
+        if (this.data.isNew && this.data.material.id == 0) {
+            this.addNewMaterial();
+        } else {
+            this.updateMaterial();
+        }
     }
 
     cancel(): void {
-        this.openSnackBar('Clicked New Material cancel button', 'Cancel');
+        //this.openSnackBar('Clicked cancel button', 'Cancel');
         this.dialogRef.close();
     }
 
@@ -63,6 +62,34 @@ export class MaterialDetailComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.operation = this.data.isNew ? "Add New" : "Edit";
+        if (this.data.isNew && this.data.material.id == 0) {
+            this.operation = "Add New";
+        } else {
+            this.operation = "Edit";
+
+            this.partNumberTitle = ": " + this.data.material.partNumber;
+            this.partNumber.setValue(this.data.material.partNumber);
+            this.partName.setValue(this.data.material.partName);
+            this.description.setValue(this.data.material.description);
+        }
     }
 
+    addNewMaterial(): void {
+        this.dataService.addMaterial(this.currentMaterial)
+            .subscribe(mat => {
+                this.openSnackBar(`Added new material: ${mat.partName}`, 'Save');
+                this.dialogRef.close(mat);
+            });
+    }
+
+    updateMaterial(): void {
+        this.currentMaterial.id = this.data.material.id;
+
+        this.dataService.updateMaterial(this.currentMaterial)
+            .subscribe(mat => {
+                this.openSnackBar(`Material: ${mat.partName} updated`, 'Save');
+                this.dialogRef.close(mat);
+            });
+    }
 }

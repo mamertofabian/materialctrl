@@ -40,7 +40,7 @@ namespace MaterialCtrl.Services {
         }
 
         public void RemoveMaterialById(int id) {
-            var material = _context.Materials.FirstOrDefault(m => m.Id == id);
+            var material = this.Get(id);
             if (material != null) {
                 _context.Materials.Remove(material);
                 _context.SaveChanges();

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../core/dataService';
 import { Material } from '../../shared/material';
 import { MatDialog, MatDialogConfig, MatSnackBar } from '@angular/material';
+import { GridOptions } from 'ag-grid';
 
 import { MaterialDetailComponent } from '../material-detail/material-detail.component';
 import { PromptComponent } from '../../prompt/prompt.component';
@@ -15,6 +16,8 @@ export class MaterialListComponent implements OnInit {
     private gridColumnApi;
     private gridApi;
     public materials: Material[] = [];
+    private currentRowNode;
+    private getRowNodeId;
 
     //displayedColumns = ['name', 'description'];
     //dataSource = this.materials;
@@ -39,7 +42,11 @@ export class MaterialListComponent implements OnInit {
     ]
 
     constructor(private data: DataService, public dialog: MatDialog,
-        public snackBar: MatSnackBar) { }
+        public snackBar: MatSnackBar) {
+        this.getRowNodeId = function (data) {
+            return data.id;            
+        }
+    }
 
     ngOnInit(): void {
     }
@@ -90,18 +97,29 @@ export class MaterialListComponent implements OnInit {
             });
     }
 
-    openDialog(): void {
+    openDialog(isNew: boolean): void {
         const dialogConfig = new MatDialogConfig();
+        var newMaterial = new Material();
+        newMaterial.id = 0;
+
         dialogConfig.autoFocus = true;
         dialogConfig.disableClose = true;
         dialogConfig.closeOnNavigation = true;
-        dialogConfig.data = {};
+        dialogConfig.data = {
+            isNew: isNew,
+            material: isNew ? newMaterial : this.selectedRow
+        };
 
         let dialogRef = this.dialog.open(MaterialDetailComponent, dialogConfig);
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
-                this.gridApi.updateRowData({ add: [result] });
+                if (isNew) {
+                    this.gridApi.updateRowData({ add: [result] });
+                } else {
+                    var rowNode = this.gridApi.getRowNode(result.id);
+                    rowNode.setData(result);
+                }
             } else {
                 console.log('The dialog was closed without result');
             }
